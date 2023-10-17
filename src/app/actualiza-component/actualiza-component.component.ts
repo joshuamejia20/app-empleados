@@ -44,4 +44,9 @@ export class ActualizaComponentComponent {
 
     this.volverHome();
   }
+
+  eliminar_empleado(){
+    this.empleadoService.eliminar_empleado(this.indice);
+    this.volverHome();
+  }
 }
