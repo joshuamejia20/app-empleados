@@ -24,7 +24,16 @@ export class HomeComponentComponent {
   }
 
   ngOnInit() : void{
-    this.empleados=this.empleadoService.empleados;
+    //this.empleados=this.empleadoService.empleados;
+    //console.log(this.empleadoService.obtener_empleado());
+    this.empleadoService.obtener_empleados().subscribe(
+      misEmpleados => {
+        console.log(misEmpleados);
+        this.empleados = Object.values(misEmpleados);
+
+        this.empleadoService.set_empleados(this.empleados);
+      }
+    )
   }
 
   agregar_empleado(){

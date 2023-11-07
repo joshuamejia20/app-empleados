@@ -15,6 +15,7 @@ export class ActualizaComponentComponent {
   cuadroCargo: string = "";
   cuadroSalario: number = 0;
   indice: number;
+  accion: number;
 
   empleados: empleado[];
 
@@ -34,15 +35,21 @@ export class ActualizaComponentComponent {
     this.cuadroApellido = empleado.apellido;
     this.cuadroCargo = empleado.cargo;
     this.cuadroSalario = empleado.salario;
+    this.accion = parseInt(this.route.snapshot.queryParams['accion']);
   }
 
   actualizar_empleado(){
-    let miEmpleado = new empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+    if(this.accion==1){
+      let miEmpleado = new empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
+      //this.empleadoService.agregar_empleado_servicio(miEmpleado);
+      this.empleadoService.actualizar_empleado(this.indice, miEmpleado);
+    }else{
+      this.empleadoService.eliminar_empleado(this.indice);
+    }
 
-    //this.empleadoService.agregar_empleado_servicio(miEmpleado);
-    this.empleadoService.actualizar_empleado(this.indice, miEmpleado);
-
-    this.volverHome();
+    setTimeout(()=>{
+      this.volverHome();
+    }, 2000);
   }
 
   eliminar_empleado(){
