@@ -16,6 +16,7 @@ import { ActualizaComponentComponent } from './actualiza-component/actualiza-com
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
 import { DataServices } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes=[
   {path: '', component: HomeComponentComponent},
@@ -23,6 +24,7 @@ const appRoutes: Routes=[
   {path: 'quienes', component: QuienesComponentComponent},
   {path: 'contacto', component: ContactoComponentComponent},
   {path: 'actualiza/:id', component: ActualizaComponentComponent},
+  {path: 'login', component: LoginComponent},
   {path: '**', component: ErrorPersonalizadoComponent}
 ];
 
@@ -36,7 +38,8 @@ const appRoutes: Routes=[
     QuienesComponentComponent,
     ContactoComponentComponent,
     ActualizaComponentComponent,
-    ErrorPersonalizadoComponent
+    ErrorPersonalizadoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule, FormsModule, RouterModule.forRoot(appRoutes), HttpClientModule
