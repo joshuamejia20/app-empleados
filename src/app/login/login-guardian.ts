@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from "@angular/router";
 import { LoginService } from "./login.service";
+import Swal from "sweetalert2";
 
 @Injectable()
 export class LoginGuardian implements CanActivate{
@@ -10,7 +11,13 @@ export class LoginGuardian implements CanActivate{
         if(this.loginService.estaLogueado()){
             return true;
         }else{
-            this.router.navigate(['login']);
+            Swal.fire({
+            title: "NO TIENES ACCESO. LOGUEATE",
+            showDenyButton: false,
+            showCancelButton: false,
+            }).then((result) => {
+                this.router.navigate(['login']);
+            });
             return false;
         }
     }
