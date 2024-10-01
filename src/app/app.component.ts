@@ -3,11 +3,13 @@ import { RouterOutlet } from '@angular/router';
 import { empleado } from './empleado.models';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { EmpleadoHijoCComponent } from './empleado-hijo-c/empleado-hijo-c.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule],
+  imports: [RouterOutlet, CommonModule, FormsModule, EmpleadoHijoCComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
