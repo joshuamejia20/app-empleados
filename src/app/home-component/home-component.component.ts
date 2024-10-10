@@ -10,7 +10,7 @@ import { ServicioEmpleadoService } from '../servicio-empleado.service';
   selector: 'app-home-component',
   standalone: true,
   imports: [CommonModule, FormsModule, EmpleadoHijoCComponent],
-  providers: [ServicioEmpleadoService, empleadosService],
+  providers: [ServicioEmpleadoService],
   templateUrl: './home-component.component.html',
   styleUrl: './home-component.component.css'
 })

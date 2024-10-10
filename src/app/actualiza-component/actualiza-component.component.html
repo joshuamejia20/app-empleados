@@ -1,10 +1,9 @@
-<p>proyectos-component works!</p>
-
+<p>actualiza-component works!</p>
 <div class="container">
     <div class="col">
         <h1>{{titulo}}</h1>
     </div><br>
-    <form class="form-group row" (ngSubmit)="guardar_empleado()">
+    <form class="form-group row" (ngSubmit)="actualizar_empleado()">
         <div class="form-group col-md-3">
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" id="nombre" placeholder="Digite nombres" class="form-control"
@@ -26,11 +25,7 @@
                 [(ngModel)]="cuadroSalario">
         </div>
         <div class="col">
-            <button type="submit" class="btn btn-primary">Guardar Empleado</button>
+            <button type="submit" class="btn btn-warning">Actualizar Empleado</button>
         </div>
     </form>
-</div>
-
-<div style="text-align: center;">
-    <button class="btn btn-primary" (click)="volverHome()">Regresar</button>
 </div>
