@@ -3,7 +3,7 @@
     <div class="col">
         <h1>{{titulo}}</h1>
     </div><br>
-    <form class="form-group row" (ngSubmit)="actualizar_empleado()">
+    <form class="form-group row" (ngSubmit)="accion_empleado()">
         <div class="form-group col-md-3">
             <label for="nombre">Nombre:</label>
             <input type="text" name="nombre" id="nombre" placeholder="Digite nombres" class="form-control"
@@ -26,6 +26,7 @@
         </div>
         <div class="col">
             <button type="submit" class="btn btn-warning">Actualizar Empleado</button>
+            <!--<button type="button" class="btn btn-danger" (click)="eliminar_empleado()">Eliminar Empleado</button>-->
         </div>
     </form>
 </div>
