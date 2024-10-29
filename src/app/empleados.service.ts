@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { empleado } from "./empleado.models";
 import { ServicioEmpleadoService } from "./servicio-empleado.service";
+import { DataServices } from "./data.service";
 
 @Injectable({
     providedIn: 'root'
@@ -13,11 +14,12 @@ export class empleadosService{
         new empleado('Maria','Sorto', 'Colaborador',800),
     ];
 
-    constructor(private servicioMensaje: ServicioEmpleadoService){}
+    constructor(private servicioMensaje: ServicioEmpleadoService, private dataService: DataServices){}
 
     agregar_empleado_servicio(empleado:empleado){
         this.servicioMensaje.muestra_mensaje("Nombre ingresado: " + empleado.nombre);
         this.empleados.push(empleado);
+        this.dataService.guardar_arreglo(this.empleados);
     }
 
     encontrar_empleado(indice: number){
