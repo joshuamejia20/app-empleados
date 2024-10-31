@@ -9,9 +9,13 @@ export class DataServices{
     constructor(private httpClient: HttpClient){}
 
     guardar_arreglo(empleados: empleado[]){
-        this.httpClient.post('https://misempleados2024-default-rtdb.firebaseio.com/datos.json', empleados).subscribe(
+        this.httpClient.put('https://misempleados2024-default-rtdb.firebaseio.com/datos.json', empleados).subscribe(
             response => console.log("Se han guardado los cambios en firebase"),
             error=>console.log('Error: ' + error)
         );
+    }
+
+    cargar_arreglo(){
+        return this.httpClient.get('https://misempleados2024-default-rtdb.firebaseio.com/datos.json');
     }
 }

@@ -7,12 +7,14 @@ import { DataServices } from "./data.service";
     providedIn: 'root'
 })
 export class empleadosService{
-    empleados: empleado[]=[
+    /*empleados: empleado[]=[
         new empleado('Josue','Mejia', 'Ingeniero',5000),
         new empleado('Jared','Garay', 'Jefe',3000),
         new empleado('Juan','Pérez', 'Administrativo',1000),
         new empleado('Maria','Sorto', 'Colaborador',800),
-    ];
+    ];*/
+
+    empleados: empleado[]=[];
 
     constructor(private servicioMensaje: ServicioEmpleadoService, private dataService: DataServices){}
 
@@ -37,5 +39,13 @@ export class empleadosService{
 
     eliminar_empleado(indice: number){
         this.empleados.splice(indice, 1);
+    }
+
+    obtener_empleados(){
+        return this.dataService.cargar_arreglo();//observable -> permite operaciones asincronas en 2do plano, actualizar sin hacer select
+    }
+
+    set_empleados(misEmpleados: empleado[]){
+        this.empleados = misEmpleados;
     }
 }
