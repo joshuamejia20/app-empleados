@@ -41,6 +41,8 @@ export class empleadosService{
 
     eliminar_empleado(indice: number){
         this.empleados.splice(indice, 1);
+        this.dataService.eliminar_posicion(indice);
+        this.dataService.guardar_arreglo(this.empleados);
     }
 
     obtener_empleados(){
