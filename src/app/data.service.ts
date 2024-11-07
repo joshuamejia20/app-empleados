@@ -18,4 +18,13 @@ export class DataServices{
     cargar_arreglo(){
         return this.httpClient.get('https://misempleados2024-default-rtdb.firebaseio.com/datos.json');
     }
+
+    actualizar_posicion(indice: number, empleado: empleado){
+        let url = "https://misempleados2024-default-rtdb.firebaseio.com/datos/" + indice + ".json";
+
+        this.httpClient.put(url, empleado).subscribe(
+            response =>console.log("Se ha actualizado el empleado " + response),
+            error =>console.log("Error: "+ error)
+        );
+    }
 }

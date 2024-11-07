@@ -50,7 +50,11 @@ export class ActualizaComponentComponent implements OnInit{
       this.empleadosService.eliminar_empleado(this.indice);
     }
 
-    this.router.navigate(['']);
+    setTimeout(() => {
+      this.router.navigate(['']);
+      
+    }, 500);
+
   }
 
   /*actualizar_empleado(){
