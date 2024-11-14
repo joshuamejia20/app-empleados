@@ -5,6 +5,7 @@ import { QuienesComponentComponent } from './quienes-component/quienes-component
 import { ContactoComponentComponent } from './contacto-component/contacto-component.component';
 import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component';
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     {path: "", component: HomeComponentComponent},
@@ -12,5 +13,6 @@ export const routes: Routes = [
     {path:"quienes", component: QuienesComponentComponent},
     {path: "contacto", component: ContactoComponentComponent},
     {path:"actualiza/:id", component: ActualizaComponentComponent},
+    {path: "login", component: LoginComponent},
     {path: "**", component: ErrorPersonalizadoComponent}
 ];
