@@ -5,12 +5,13 @@ import { EmpleadoHijoCComponent } from '../empleado-hijo-c/empleado-hijo-c.compo
 import { empleado } from '../empleado.models';
 import { empleadosService } from '../empleados.service';
 import { ServicioEmpleadoService } from '../servicio-empleado.service';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-home-component',
   standalone: true,
   imports: [CommonModule, FormsModule, EmpleadoHijoCComponent],
-  providers: [ServicioEmpleadoService],
+  providers: [ServicioEmpleadoService, LoginService],
   templateUrl: './home-component.component.html',
   styleUrl: './home-component.component.css'
 })
