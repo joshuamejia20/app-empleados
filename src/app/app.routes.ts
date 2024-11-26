@@ -6,10 +6,11 @@ import { ContactoComponentComponent } from './contacto-component/contacto-compon
 import { ActualizaComponentComponent } from './actualiza-component/actualiza-component.component';
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
 import { LoginComponent } from './login/login.component';
+import { LoginGuardian } from './login/login-guardian';
 
 export const routes: Routes = [
     {path: "", component: HomeComponentComponent},
-    {path: "proyectos", component: ProyectosComponentComponent},
+    {path: "proyectos", component: ProyectosComponentComponent, canActivate: [LoginGuardian]},
     {path:"quienes", component: QuienesComponentComponent},
     {path: "contacto", component: ContactoComponentComponent},
     {path:"actualiza/:id", component: ActualizaComponentComponent},
