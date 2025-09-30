@@ -3,10 +3,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { empleado } from './empleado.model';
 import { CommonModule } from '@angular/common';
+import { EmpleadoHijoC } from "./empleado-hijo-c/empleado-hijo-c";
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, EmpleadoHijoC],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -16,7 +17,6 @@ export class App {
   cuadroApellido: string = "";
   cuadroCargo: string = "";
   cuadroSalario: number = 0;
-
   empleados: empleado[] = [
     new empleado("Josue", "Mejia", "Jefe", 99999.99),
     new empleado("Jared", "Garay", "Director", 1000),
