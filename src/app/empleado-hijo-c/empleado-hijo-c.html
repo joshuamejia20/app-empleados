@@ -2,9 +2,13 @@
     <div class="row">
         <div class="col">
             <div>
-                {{ (indice+1) }} - {{ empleadoLista.nombre}} {{empleadoLista.apellido}} {{ empleadoLista.cargo}} ${{empleadoLista.salario}}
+                <a [routerLink]="['actualiza', indice]">
+                    {{ (indice+1) }} - {{ empleadoLista.nombre}} {{empleadoLista.apellido}} {{ empleadoLista.cargo}}
+                    ${{empleadoLista.salario}}
+                </a>
             </div>
-            <app-caracteristicas-empleado-c (caracteristicasEmpleados)="agregar_caracteristica($event)"></app-caracteristicas-empleado-c>
+            <app-caracteristicas-empleado-c
+                (caracteristicasEmpleados)="agregar_caracteristica($event)"></app-caracteristicas-empleado-c>
             <ul style="list-style: none;">
                 <li *ngFor="let caracteristica of array_caracteristicas">
                     {{caracteristica}}
