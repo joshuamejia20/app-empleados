@@ -12,9 +12,13 @@ export class DataServices{
     }
 
     guardar_empleado(empleados: empleado[]){
-        this.httpClient.post('https://misempleados2025-default-rtdb.firebaseio.com/datos.json', empleados).subscribe(
+        this.httpClient.put('https://misempleados2025-default-rtdb.firebaseio.com/datos.json', empleados).subscribe(
             response=>console.log("Se han guardado los empleados"),
             error=>console.log('Error ' + error)
         )
+    }
+
+    cargar_empleados(){
+        return this.httpClient.get('https://misempleados2025-default-rtdb.firebaseio.com/datos.json')
     }
 }
