@@ -68,6 +68,8 @@ export class ActualizaComponent implements OnInit {
       this.empleadosService.eliminar_empleado(this.indice);
     }
 
-    this.volverHome();
+    setTimeout(() => {
+      this.volverHome();
+    }, 1000);
   }
 }

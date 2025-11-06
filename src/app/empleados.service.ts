@@ -36,6 +36,8 @@ export class empleadosService{
         empleadoModificado.apellido = empleado.apellido;
         empleadoModificado.cargo = empleado.cargo;
         empleadoModificado.salario = empleado.salario;
+
+        this.dataService.actualizar_empleado(indice, empleado);
     }
 
     eliminar_empleado(indice: number){
