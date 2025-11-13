@@ -30,18 +30,27 @@ export class empleadosService{
         return empleado;
     }
 
-    actualizar_empleado(indice: number, empleado: empleado){
+    async actualizar_empleado(indice: number, empleado: empleado): Promise<void>{
         let empleadoModificado = this.empleados[indice];
         empleadoModificado.nombre = empleado.nombre;
         empleadoModificado.apellido = empleado.apellido;
         empleadoModificado.cargo = empleado.cargo;
         empleadoModificado.salario = empleado.salario;
+        
+        try{
+            await this.dataService.actualizar_empleado(indice, empleado);
+        }catch(error){
+            console.log("Error en conexión a Firebase: ", error);
+            throw error;
+        }
 
-        this.dataService.actualizar_empleado(indice, empleado);
+        //this.dataService.actualizar_empleado(indice, empleado);
     }
 
     eliminar_empleado(indice: number){
         this.empleados.splice(indice, 1);
+        this.dataService.eliminar_empleado(indice);
+        this.dataService.guardar_empleado(this.empleados);
     }
 
     obtener_empleados(){

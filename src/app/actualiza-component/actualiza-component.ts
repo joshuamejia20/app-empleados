@@ -57,19 +57,32 @@ export class ActualizaComponent implements OnInit {
     this.volverHome();
   }*/
 
-  actualizar_empleado() {
+  async actualizar_empleado() {
+    let operacionGuardada: Promise<void> | undefined ;
+
     if (this.accion == 1) {
       let miEmpleado = new empleado(this.cuadroNombre, this.cuadroApellido, this.cuadroCargo, this.cuadroSalario);
 
+      operacionGuardada = this.empleadosService.actualizar_empleado(this.indice, miEmpleado);
+
       //this.empleados.push(miEmpleado);
       //this.miServicio.muestra_mensaje("Empleado registrado con el nombre: " + miEmpleado.nombre);
-      this.empleadosService.actualizar_empleado(this.indice, miEmpleado);
+      //this.empleadosService.actualizar_empleado(this.indice, miEmpleado);
     } else {
       this.empleadosService.eliminar_empleado(this.indice);
     }
 
-    setTimeout(() => {
+    try{
+      if(operacionGuardada){
+        await operacionGuardada;
+        this.volverHome();
+      }
+    }catch(error){
+      console.log("La operación ha fallado");
+    }
+
+    /*setTimeout(() => {
       this.volverHome();
-    }, 1000);
+    }, 5000);*/
   }
 }
