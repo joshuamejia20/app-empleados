@@ -1,10 +1,10 @@
 <div class="m-5">
-    <form class="form-group row">
+    <form class="form-group row" #miFormulario="ngForm" (ngSubmit)="login(miFormulario)">
         <div class="form-group col-md-12">
-            <input type="email" name="email"  placeholder="Ingrese su email" class="form-control">
+            <input type="email" name="email"  placeholder="Ingrese su email" class="form-control" ngModel>
         </div>
         <div class="form-group col-md-12">
-            <input type="password" name="password" placeholder="Ingrese su contraseña" class="form-control">
+            <input type="password" name="password" placeholder="Ingrese su contraseña" class="form-control" ngModel>
         </div>
         <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
     </form>

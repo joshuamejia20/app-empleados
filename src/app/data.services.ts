@@ -2,13 +2,15 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { empleado } from "./empleado.model";
 import { lastValueFrom } from "rxjs";
+import { Router } from "@angular/router";
+import { LoginService } from "./login/login.service";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class DataServices{
-    constructor(private httpClient: HttpClient){
+    constructor(private httpClient: HttpClient, private router: Router, private loginService: LoginService){
 
     }
 
@@ -20,7 +22,8 @@ export class DataServices{
     }
 
     cargar_empleados(){
-        return this.httpClient.get('https://misempleados2025-default-rtdb.firebaseio.com/datos.json')
+        const token = this.loginService.getIdToken();
+        return this.httpClient.get('https://misempleados2025-default-rtdb.firebaseio.com/datos.json?auth=' + token);
     }
 
     actualizar_empleado(indice: number, empleado: empleado): Promise<any>{
