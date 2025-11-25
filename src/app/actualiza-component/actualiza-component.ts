@@ -40,7 +40,7 @@ export class ActualizaComponent implements OnInit {
     this.cuadroSalario = empleado.salario;
   }
   volverHome() {
-    this.router.navigate(['']);
+    this.router.navigate(['inicio']);
   }
 
   /*actualizar_empleado(){

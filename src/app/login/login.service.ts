@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { CookieService } from "ngx-cookie-service";
 
 @Injectable(
     {
@@ -9,7 +10,7 @@ import "firebase/compat/auth";
     }
 )
 export class LoginService {
-    constructor(private router: Router){}
+    constructor(private router: Router, private cookies: CookieService){}
     token: string;
 
     login(email:string, password:string){
@@ -20,7 +21,8 @@ export class LoginService {
                 .then(
                     token =>{
                         this.token = token;
-                        this.router.navigate(['']);
+                        this.cookies.set('token', token);
+                        this.router.navigate(['inicio']);
                     },
                     error=>{
                         console.log("Error al obtener el token" + error);
@@ -31,12 +33,14 @@ export class LoginService {
     }
 
     getIdToken(){
-        return this.token;
+        //return this.token;
+        return this.cookies.get('token');
     }
 
     estaLogueado(){
-        console.log(this.token);
-        return this.token;
+        //console.log(this.token);
+        //return this.token;
+        return this.cookies.get('token');
     }
 
     logout(){
@@ -44,6 +48,7 @@ export class LoginService {
         .then(
             ()=>{
                 this.token = '';
+                this.cookies.delete('token');
                 this.router.navigate(['login']);
             }
         )
